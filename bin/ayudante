@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+
+'use strict'
+
+var npmlog = require('npmlog')
+
+var ayudante = require('../lib/ayudante.js')
+
+var pkg = require('../package.json')
+
+var argv = require('yargs')
+  .usage('Usage: $0 <path-to-repository>')
+  .demand(1, 'repository missing, please provide the path to the repository')
+  .showHelpOnFail(true)
+  .version()
+  .argv
+
+var repo = argv._[0]
+
+try {
+  ayudante.patchFile(repo)
+} catch (err) {
+
+  if (err.type === 'EUSAGE') {
+    npmlog.error([
+      'Usage error:',
+      err.message
+    ].join('\n'))
+    process.exit(1)
+  }
+
+  if (err.stack) {
+    npmlog.error(err.stack)
+  }
+  npmlog.error('')
+  npmlog.error('Please open an issue containing this error log at:')
+  npmlog.error(pkg.bugs.url)
+
+
+  process.exit(1)
+}

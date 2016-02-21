@@ -1,0 +1,46 @@
+{
+  "name": "ayudante",
+  "version": "1.0.0",
+  "description": "Easy reviews for the productive developer",
+  "main": "lib/ayudante.js",
+  "scripts": {
+    "pretest": "make && standard",
+    "prepublish": "npm t && make",
+    "test": "tap --cov test/*.js",
+    "babel": "babel"
+  },
+  "bin": "bin/ayudante",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robertkowalski/ayudante.git"
+  },
+  "keywords": [
+    "cli",
+    "productivity",
+    "developer"
+  ],
+  "author": "Robert Kowalski <rok@kowalski.gd>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robertkowalski/ayudante/issues"
+  },
+  "standard": {
+    "ignore": [
+      "lib/**"
+    ]
+  },
+  "homepage": "https://github.com/robertkowalski/ayudante#readme",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-preset-es2015": "^6.5.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.2",
+    "standard": "^6.0.4",
+    "tap": "^5.4.3"
+  },
+  "dependencies": {
+    "npmlog": "^2.0.2",
+    "tulips": "^1.0.0",
+    "yargs": "^4.1.0"
+  }
+}
